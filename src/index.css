@@ -1,9 +1,9 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
 
 html, body {
   @apply m-0 p-0 box-border;
   @apply bg-[#0a0a0a] text-white;
-  font-family: '', sans-serif;
-
+  font-family: 'Roboto';
+  scroll-behavior: smooth;
 }

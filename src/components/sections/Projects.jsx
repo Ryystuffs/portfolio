@@ -27,8 +27,8 @@ export const Projects = () => {
         }   
     ];
     return (
-        <section id="projects" className="flex flex-col justify-center items-center my-20">
-            <div className="text-center text-blue-600 text-[42px] mb-10">Projects</div>
+        <section id="projects" className="flex flex-col justify-center items-center mt-45 mb-35 ">
+            <div className="text-center text-purple-800 text-[52px] font-extrabold mb-10">Projects</div>
             <div className="flex flex-wrap justify-center gap-2 max-w-[80%]">
                 {projects.map((proj,index)=>(
                     <Card

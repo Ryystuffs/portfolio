@@ -7,15 +7,15 @@ function App() {
   return (
     <>
       {/* Navbar */}
-      <div className="bg-gray-900 flex justify-between text-[25px] sticky">
+      <div className="bg-black flex justify-between text-[25px] mx-2 sticky top-0">
         <div className="flex items-center mx-6">
-          <p>Ryan</p>
+          <a href="#home"><p>ryan.<span className='text-purple-800'>dev</span></p></a>
         </div>
         <div className="">
-          <ul className="flex space-x-10 p-4 text-white">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
+          <ul className="flex space-x-20 p-4 text-white mx-8">
+            <li><a href="#home" className='hover:bg-gray-700 py-1 px-4 rounded-lg hover:border-b-2 hover:border-b-purple-600'>Home</a></li>
+            <li><a href="#projects" className='hover:bg-gray-700 py-1 px-4 rounded-lg hover:border-b-2 hover:border-b-purple-600'>Projects</a></li>
+            <li><a href="#about" className='hover:bg-gray-700 py-1 px-4 rounded-lg hover:border-b-2 hover:border-b-purple-600'>About</a></li>
           </ul>
         </div>
       </div>

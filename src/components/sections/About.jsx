@@ -3,7 +3,7 @@ export const About = () => {
     const backend = ['PHP', 'Laravel', 'MySQL', 'C++', 'XAMPP'];
 
     return (
-        <section id="about" className="flex justify-center m-40 px-4">
+        <section id="about" className="flex justify-center lg:m-40 px-4 sm:px-0 sm:m-1">
             <div className="max-w-5xl w-full">
                 <h2 className="text-center text-purple-800 text-4xl md:text-[52px] mb-15 font-extrabold ">
                     About Me

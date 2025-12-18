@@ -1,7 +1,7 @@
 import iconGithub from '../assets/github.png'
 export const Card = ({pic, title, description, techStack, link}) => {
     return (
-        <div className="bg-[#1f2839] flex justify-around items-center rounded-lg p-5 my-3 hover:-translate-y-2 transition-all ease-in-out duration-700">
+        <div className="bg-[#1f2839] lg:flex sm:grid-rows-2 line line-clamp-4 xjustify-around items-center rounded-lg p-5 my-3 hover:-translate-y-2 transition-all ease-in-out duration-700">
             <div className="flex justify-center min-w-[50%] h-80 object-cover">
                 <img src={pic} alt={title} className="rounded-lg"/>
             </div>

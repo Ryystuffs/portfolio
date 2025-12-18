@@ -4,7 +4,7 @@ import linkedin from '../../assets/linkedin.png';
 import facebook from '../../assets/facebook.png';
 export const Home = () => {
     return (
-        <section id="home" className='flex items-center justify-between p-3 mt-15 mx-20 min-h-full'>
+        <section id="home" className='md:flex items-center justify-between p-3 mt-15 mx-20 min-h-full'>
             <div className=''> 
                 <div className='hover:-translate-y-2 transition-all ease-in-out duration-700'>
                     <p className='text-[52px]'>Aspiring <span className='text-purple-800'>Associate Web Developer</span></p>
@@ -17,7 +17,7 @@ export const Home = () => {
                 </div>
             </div>
             <div className='hover:-translate-y-2 transition-all ease-in-out duration-700'>
-                <img src={pic} alt="" className='h-200 rounded-full border-1-black bg-gray-900'/>
+                <img src={pic} alt="" className='mt-20 lg:h-200 md:50 rounded-full border-1-black bg-gray-900'/>
             </div>
         </section>
     );

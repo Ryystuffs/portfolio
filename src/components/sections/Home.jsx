@@ -17,7 +17,7 @@ export const Home = () => {
                 </div>
             </div>
             <div className='hover:-translate-y-2 transition-all ease-in-out duration-700'>
-                <img src={pic} alt="" className='mt-20 lg:h-200 md:50 rounded-full border-1-black bg-gray-900'/>
+                <img src={pic} alt="" className='mt-20 lg:mt-0 lg:h-200 rounded-full border-1-black bg-gray-900'/>
             </div>
         </section>
     );

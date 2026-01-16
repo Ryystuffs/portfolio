@@ -2,7 +2,7 @@ import iconGithub from '../assets/github-logo.png'
 export const Card = ({pic, title, role, description, techStack, link}) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5 rounded-lg">
-            <div className="py-7 px-13">
+            <div className="py-7 md:px-13">
                 <img src={pic} alt={title} className="rounded-lg"/>
             </div>
             <div className="">

@@ -1,5 +1,5 @@
 import { Menu } from 'lucide-react';  
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +19,9 @@ export const Navbar = () => {
         </div>
         <div className="">
             <ul className="hidden md:flex space-x-20 p-4 text-white mx-8">
-                <li><a href="#home" className='hover:bg-gray-700 py-1 px-4 rounded-lg hover:border-b-2 hover:border-b-purple-600'>Home</a></li>
-                <li><a href="#projects" className='hover:bg-gray-700 py-1 px-4 rounded-lg hover:border-b-2 hover:border-b-purple-600'>Projects</a></li>
-                <li><a href="#about" className='hover:bg-gray-700 py-1 px-4 rounded-lg hover:border-b-2 hover:border-b-purple-600'>About</a></li>
+                <li><a href="#home" className='py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'>Home</a></li>
+                <li><a href="#projects" className='py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'>Projects</a></li>
+                <li><a href="#about" className='py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'>About</a></li>
             </ul>
             <div className="md:hidden p-4 text-white" onClick={toggleMenu}>
                 {!isOpen ? <Menu /> : <X />}

@@ -4,7 +4,11 @@ import {Home} from './components/sections/Home.jsx'
 import {Projects} from './components/sections/Projects.jsx'
 import {About} from './components/sections/About.jsx'
 import {Navbar} from './components/navbar.jsx'
-function App() {
+import { useState, useEffect } from 'react'
+function App() { 
+
+  
+  
   return (
     <>
         <Navbar />

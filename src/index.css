@@ -6,4 +6,8 @@ html, body {
   @apply bg-[#0a0a0a] text-white;
   font-family: 'Roboto';
   scroll-behavior: smooth;
+
+}
+.active {
+  @apply border-b-2 border-white ease-in-out duration-500;
 }

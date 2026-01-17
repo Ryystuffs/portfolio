@@ -30,10 +30,10 @@ export const Projects = () => {
         }   
     ];
     return (
-        <section id="projects" className="">
-            <div className="text-[52px] font-extrabold mt-5 mx-10 px-10">Projects</div>
+        <section id="projects" className="mt-20 pt-10 mb-0 bg-black">
+            <div className="text-[52px] font-extrabold mt-5 mx-10 px-10 ">Projects</div>
             <div className="p-10">
-                {projects.map((proj,index)=>(
+                {projects.map((proj,index)=>(  
                     <Card
                         key={index}
                         pic={proj.pic}

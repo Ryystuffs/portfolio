@@ -11,7 +11,8 @@ const useActiveSection = () => {
             }
             })
         },{
-            threshold: 0.25,
+            rootMargin: '-20% 0px -40% 0px', 
+            threshold: 0
         });
 
             sections.forEach((section => observer.observe(section)));

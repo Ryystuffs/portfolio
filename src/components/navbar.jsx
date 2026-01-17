@@ -31,7 +31,7 @@ export const Navbar = () => {
             </div>
         </div>
         {isOpen ? (
-            <div className="fixed w-full top-13 left-0 h-screen bg-black z-40 flex flex-col justify-center items-center space-y-10 text-white text-3xl text-decoration-none duration-300 ease-in-out ">
+            <div className="fixed w-full top-14 left-0 h-screen bg-black z-40 flex flex-col justify-center items-center space-y-10 text-white text-3xl text-decoration-none duration-300 ease-in-out ">
                 <a href="#home" onClick={closeMenu} className={activeSection === 'home' ? 'active pb-1.5': 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>Home</a>
                 <a href="#projects" onClick={closeMenu} className={activeSection === 'projects' ? 'active pb-1.5' : 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>Projects</a>
                 <a href="#about" onClick={closeMenu} className={activeSection === 'about' ? 'active pb-1.5': 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>About</a>

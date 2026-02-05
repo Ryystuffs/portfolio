@@ -4,14 +4,15 @@ import project2 from '../../assets/project2.png';
 import project3 from '../../assets/project3.png';
 export const Projects = () => {
     const projects =[
-        {
+        {   
             pic: project1,
             title: 'Gym Membership Management System',
             role: 'Full-Stack Lead Developer',
             description:'This Gym Management System is a full-stack web application designed to automate facility operations and member attendance. Built on the Laravel framework, the system features a secure, real-time check-in architecture utilizing Simple QrCode and Html5-QrCode for seamless generation and scanning. The user interface is crafted with Tailwind CSS for a modern, responsive experience, while the backend is powered by MySQL and XAMPP Apache to ensure robust data management and reliable performance.',
             techStack:['Laravel','Javascript','Blade','MySQL','SweetAlert'],
             link: 'https://github.com/Ryystuffs/gymsystem',
-            live: "https://gym-management-system.infinityfreeapp.com/"
+            live: "https://gym-management-system.infinityfreeapp.com/",
+            vid: "https://www.youtube.com/embed/jWmFhjxS8T4?controls=0&autoplay=1&mute=1"
         },
         {
             pic: project2,
@@ -44,6 +45,7 @@ export const Projects = () => {
                         techStack={proj.techStack}  
                         link={proj.link}
                         live={proj.live}
+                        vid={proj.vid}
                     />
                 ))}
             </div>

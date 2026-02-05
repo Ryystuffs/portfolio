@@ -10,7 +10,8 @@ export const Projects = () => {
             role: 'Full-Stack Lead Developer',
             description:'This Gym Management System is a full-stack web application designed to automate facility operations and member attendance. Built on the Laravel framework, the system features a secure, real-time check-in architecture utilizing Simple QrCode and Html5-QrCode for seamless generation and scanning. The user interface is crafted with Tailwind CSS for a modern, responsive experience, while the backend is powered by MySQL and XAMPP Apache to ensure robust data management and reliable performance.',
             techStack:['Laravel','Javascript','Blade','MySQL','SweetAlert'],
-            link: 'https://github.com/Ryystuffs/gymsystem'
+            link: 'https://github.com/Ryystuffs/gymsystem',
+            live: "https://gym-management-system.infinityfreeapp.com/"
         },
         {
             pic: project2,
@@ -35,13 +36,14 @@ export const Projects = () => {
             <div className="p-10">
                 {projects.map((proj,index)=>(  
                     <Card
-                        key={index}
+                        key={proj.title}
                         pic={proj.pic}
                         title={proj.title}
                         role={proj.role}
                         description={proj.description}
                         techStack={proj.techStack}  
                         link={proj.link}
+                        live={proj.live}
                     />
                 ))}
             </div>

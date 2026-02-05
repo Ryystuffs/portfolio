@@ -1,7 +1,8 @@
 import iconGithub from '../assets/github-logo.png'
 import { motion } from 'motion/react';
+import rocket from '../assets/rocket.png'
 
-export const Card = ({pic, title, role, description, techStack, link}) => {
+export const Card = ({pic, title, role, description, techStack, link, live}) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5 rounded-lg">
             <motion.div initial={{ opacity:0}} whileInView={{ opacity: 1 }} transition={{duration: 1, ease: "easeInOut"}} className="py-7 md:px-13">
@@ -26,7 +27,7 @@ export const Card = ({pic, title, role, description, techStack, link}) => {
                     ))}
                     </div>
                 </div>
-                <div className="flex">
+                <div className="flex flex-col sm:flex-row sm:gap-4">
                     <motion.a
                         href={link}
                         whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
@@ -38,6 +39,23 @@ export const Card = ({pic, title, role, description, techStack, link}) => {
                         <img src={iconGithub} alt="GitHub icon" className="h-6 w-6" />
                         <span className="text-sm font-medium">View on GitHub</span>
                     </motion.a>
+
+                    {
+                        live && (
+                            <motion.a
+                                href={live}
+                                whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-5 w-48 border border-white rounded-3xl py-3 px-5 
+                                        flex items-center gap-3 hover:bg-white hover:text-black transition"
+                            >
+                                <img src={rocket} alt="Live Demo icon" className="h-6 w-6" />
+                                <span className="text-sm font-medium">Live Link</span>
+                            </motion.a>
+                        )
+                    }
+                    
                 </div>
             </motion.div>
         </div>

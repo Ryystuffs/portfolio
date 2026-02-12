@@ -16,7 +16,7 @@ export const Navbar = () => {
     },[isOpen]);
     const activeSection = useActiveSection()
     return (    
-    <div className="bg-black flex justify-between text-[25px] mx-2 sticky top-0 z-50">
+    <div className="bg-black/40 backdrop-blur-lg border-b border-white/10 flex justify-between text-[25px] mx-2 sticky top-0 z-50">
         <div className="flex items-center mx-6">
         <a href="#home"><p>ryan.<span className='text-purple-800'>dev</span></p></a>
         </div>
@@ -27,22 +27,21 @@ export const Navbar = () => {
                 <li className={activeSection === 'about' ? 'active' : ''}><a href="#about" className={activeSection === 'about' ? 'py-1 px-4 rounded-lg cursor-pointer' : 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>About</a></li>
             </ul>
             <div className="md:hidden p-4 text-white" onClick={toggleMenu}>
-                {!isOpen ? <Menu /> : <X />}
+                {!isOpen ? <Menu className='bg-black/50 backdrop-blur-xl' /> : <X />}
             </div>
         </div>
-        {isOpen ? (
-            <div className="fixed w-full top-14 left-0 h-screen bg-black z-40 flex flex-col justify-center items-center space-y-10 text-white text-3xl text-decoration-none duration-300 ease-in-out ">
-                <a href="#home" onClick={closeMenu} className={activeSection === 'home' ? 'active pb-1.5': 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>Home</a>
-                <a href="#projects" onClick={closeMenu} className={activeSection === 'projects' ? 'active pb-1.5' : 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>Projects</a>
-                <a href="#about" onClick={closeMenu} className={activeSection === 'about' ? 'active pb-1.5': 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>About</a>
-            </div>
-        ): (
-            <div className="fixed w-full top-13 left-[-150%] h-screen bg-black z-40 flex flex-col justify-center items-center space-y-10 text-white text-3xl text-decoration-none">
-                <a href="#home" onClick={closeMenu} className=''>Home</a>
-                <a href="#projects" onClick={closeMenu} className=''>Projects</a>
-                <a href="#about" onClick={closeMenu} className=''>About</a>
-            </div>
-        )}
+        <div className={`
+            fixed w-full top-14 left-0 h-screen
+            bg-black/60 backdrop-blur-md
+            z-40 flex flex-col justify-center items-center
+            space-y-10 text-white text-3xl
+            transition-transform duration-300 ease-in-out
+            ${isOpen ? "translate-x-0" : "-translate-x-full"}
+        `}>
+            <a href="#home" onClick={closeMenu}>Home</a>
+            <a href="#projects" onClick={closeMenu}>Projects</a>
+            <a href="#about" onClick={closeMenu}>About</a>
+        </div>
     </div>
     );
 }

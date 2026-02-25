@@ -12,7 +12,7 @@ export const Projects = () => {
             techStack:['Laravel','Javascript','Blade','MySQL','SweetAlert'],
             link: 'https://github.com/Ryystuffs/gymsystem',
             live: "https://gym-management-system.infinityfreeapp.com/",
-            vid: "https://www.youtube.com/embed/jWmFhjxS8T4?controls=0&autoplay=1&mute=1"
+            vid: "https://www.youtube.com/embed/_lBIpgtJiac?controls=0&autoplay=1&mute=1"
         },
         {
             pic: project2,

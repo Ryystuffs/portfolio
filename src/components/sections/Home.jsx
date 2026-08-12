@@ -4,7 +4,7 @@ import { motion as Motion } from 'motion/react';
 import TextType from '../reactbits/TextType';
 import { site, socials } from '../../data/site.js';
 
-const socialIcons = { Github, Linkedin, Facebook };
+const socialIcons = { GitHub: Github, LinkedIn: Linkedin, Facebook };
 
 export const Home = () => {
   return (
@@ -67,7 +67,7 @@ export const Home = () => {
                     aria-label={social.label}
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent"
                   >
-                    {Icon && <Icon className="h-4.5 w-4.5" />}
+                    {Icon && <Icon className="h-4 w-4" />}
                   </a>
                 );
               })}

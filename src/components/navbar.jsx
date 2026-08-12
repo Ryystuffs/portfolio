@@ -83,22 +83,24 @@ export const Navbar = () => {
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+      </nav>
 
-        <div
-          id="mobile-menu"
-          ref={menuRef}
-          inert={!isOpen}
-          aria-hidden={!isOpen}
-          className={`fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col items-center justify-center gap-8 bg-black/80 backdrop-blur-xl transition-opacity duration-300 md:hidden ${
-            isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-          }`}
-        >
+      <div
+        id="mobile-menu"
+        ref={menuRef}
+        inert={!isOpen}
+        aria-hidden={!isOpen}
+        className={`fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto overscroll-contain bg-black/80 backdrop-blur-xl transition-opacity duration-300 md:hidden ${
+          isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+      >
+        <div className="m-auto flex w-full flex-col items-center gap-6 py-10 sm:gap-8">
           {links.map(link => (
             <a
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className={`font-display text-3xl transition ${
+              className={`font-display text-2xl transition sm:text-3xl ${
                 activeSection === link.href.slice(1) ? 'text-accent' : 'text-white hover:text-accent'
               }`}
             >
@@ -109,7 +111,7 @@ export const Navbar = () => {
             Contact me
           </a>
         </div>
-      </nav>
+      </div>
     </header>
   );
 };

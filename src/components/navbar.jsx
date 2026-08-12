@@ -1,49 +1,115 @@
-import { Menu } from 'lucide-react';  
-import { useEffect, useState } from 'react';
-import { X } from 'lucide-react';
-import useActiveSection from '../components/useActiveSection.jsx';
-import '../../src/index.css';
+import { Menu, X } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import useActiveSection from './useActiveSection.jsx';
+
+const links = [
+  { href: '#home', label: 'Home' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#about', label: 'About' },
+];
+
 export const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const activeSection = useActiveSection();
+
+  const closeMenu = useCallback(() => setIsOpen(false), []);
+  const toggleMenu = () => setIsOpen(prev => !prev);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
     };
-    const closeMenu = () => {
-        setIsOpen(false);
-    }
-    useEffect(() => {
-        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
-    },[isOpen]);
-    const activeSection = useActiveSection()
-    return (    
-    <div className="bg-black/40 backdrop-blur-lg border-b border-white/10 flex justify-between text-[25px] mx-2 sticky top-0 z-50">
-        <div className="flex items-center mx-6">
-        <a href="#home"><p>ryan.<span className='text-purple-800'>dev</span></p></a>
-        </div>
-        <div className="">
-            <ul className="hidden md:flex space-x-20 p-4 text-white mx-8">
-                <li className={activeSection === 'home' ? 'active' : ''}><a href="#home" className={activeSection === 'home' ? 'py-1 px-4 rounded-lg cursor-pointer' : 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>Home</a></li>
-                <li className={activeSection === 'projects' ? 'active' : ''}><a href="#projects" className={activeSection === 'projects' ? 'py-1 px-4 rounded-lg cursor-pointer' : 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>Projects</a></li>
-                <li className={activeSection === 'about' ? 'active' : ''}><a href="#about" className={activeSection === 'about' ? 'py-1 px-4 rounded-lg cursor-pointer' : 'py-1 px-4 rounded-lg cursor-pointer hover:text-purple-800'}>About</a></li>
-            </ul>
-            <div className="md:hidden p-4 text-white" onClick={toggleMenu}>
-                {!isOpen ? <Menu className='bg-black/50 backdrop-blur-xl' /> : <X />}
-            </div>
-        </div>
-        <div className={`
-            fixed w-full top-14 left-0 h-screen
-            bg-black/60 backdrop-blur-md
-            z-40 flex flex-col justify-center items-center
-            space-y-10 text-white text-3xl
-            transition-transform duration-300 ease-in-out
-            ${isOpen ? "translate-x-0" : "-translate-x-full"}
-        `}>
-            <a href="#home" onClick={closeMenu}>Home</a>
-            <a href="#projects" onClick={closeMenu}>Projects</a>
-            <a href="#about" onClick={closeMenu}>About</a>
-        </div>
-    </div>
-    );
-}
+  }, [isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) return;
 
+    const onKeyDown = e => {
+      if (e.key === 'Escape') closeMenu();
+    };
+    const onMouseDown = e => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) closeMenu();
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('mousedown', onMouseDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('mousedown', onMouseDown);
+    };
+  }, [isOpen, closeMenu]);
+
+  return (
+    <header className="sticky top-0 z-50">
+      <nav
+        aria-label="Primary"
+        className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between border-b border-white/10 bg-black/40 px-5 backdrop-blur-xl sm:px-8"
+      >
+        <a href="#home" className="font-mono text-lg font-semibold text-white">
+          ryan.<span className="text-violet-400">dev</span>
+        </a>
+
+        <ul className="hidden items-center gap-8 md:flex">
+          {links.map(link => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className={`text-sm font-medium transition ${
+                  activeSection === link.href.slice(1)
+                    ? 'text-accent'
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-3">
+          <a href="#contact" className="btn-primary hidden px-5 py-2 md:inline-flex">
+            Contact
+          </a>
+          <button
+            type="button"
+            onClick={toggleMenu}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            className="rounded-lg border border-white/10 bg-white/5 p-2 text-white md:hidden"
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        <div
+          id="mobile-menu"
+          ref={menuRef}
+          inert={!isOpen}
+          aria-hidden={!isOpen}
+          className={`fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col items-center justify-center gap-8 bg-black/80 backdrop-blur-xl transition-opacity duration-300 md:hidden ${
+            isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+          }`}
+        >
+          {links.map(link => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={closeMenu}
+              className={`font-display text-3xl transition ${
+                activeSection === link.href.slice(1) ? 'text-accent' : 'text-white hover:text-accent'
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a href="#contact" onClick={closeMenu} className="btn-primary mt-2">
+            Contact me
+          </a>
+        </div>
+      </nav>
+    </header>
+  );
+};

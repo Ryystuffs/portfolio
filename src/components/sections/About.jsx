@@ -1,63 +1,90 @@
+import { GitHubCard } from './GitHubCard';
+
 export const About = () => {
-    const frontend = ['TailwindCSS', 'Blade', 'JavaScript', 'HTML', 'CSS'];
-    const backend = ['PHP', 'Laravel', 'MySQL', 'C++', 'XAMPP'];
+  const frontend = ['TailwindCSS', 'Next.js', 'React', 'JavaScript', 'HTML', 'CSS', 'Blade'];
+  const backend = [
+    'Node.js',
+    'Express',
+    'MongoDB',
+    'PostgreSQL',
+    'Supabase',
+    'PHP',
+    'Laravel',
+    'MySQL',
+    'C++',
+  ];
+  const tools = ['Vercel', 'Render', 'XAMPP'];
 
-    return (
-        <section id="about" className="flex justify-center px-4 sm:px-0 bg-black py-35">
-            <div className="max-w-5xl w-full">
-                <h2 className="text-center text-purple-800 text-4xl md:text-[52px] mb-15 font-extrabold ">
-                    About Me
-                </h2>
-                
-                <p className="text-xl md:text-2xl text-center leading-relaxed mb-16">
-                    An aspiring <span className="text-purple-700 font-semibold">Web Developer</span> with expertise on full stack development in building scalable websites and creating innovative solutions.
-                </p>
+  return (
+    <section id="about" className="border-t border-white/10 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mb-14">
+          <p className="eyebrow mb-3">03 // about</p>
+          <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">About me</h2>
+        </div>
 
-                {/* Skills Section */}
-                <div className="grid md:grid-cols-2 gap-10 mb-20 hover:-translate-y-2 transition-all ease-in-out duration-700">
-                    <div className="flex flex-col items-center md:items-start">
-                        <h3 className="mb-5 text-2xl font-bold hover:border-b-2 hover:border-purple-200 w-fit">Frontend</h3>
-                        <div className="flex flex-wrap justify-center md:justify-start">
-                            {frontend.map((skill, index) => (
-                                <span key={index} className="bg-[#1f2839] text-violet-400 px-4 py-2 rounded-full m-1 text-sm font-medium">
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+        <p className="max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
+          An aspiring{' '}
+          <span className="font-semibold text-violet-300">Web Developer</span> with expertise in
+          full-stack development — building scalable websites and creating innovative solutions.
+        </p>
 
-                    <div className="flex flex-col items-center md:items-start">
-                        <h3 className="mb-5 text-2xl font-bold hover:border-b-2 hover:border-purple-200 w-fit">Backend</h3>
-                        <div className="flex flex-wrap justify-center md:justify-start">
-                            {backend.map((skill, index) => (
-                                <span key={index} className="bg-[#1f2839] text-violet-400 px-4 py-2 rounded-full m-1 text-sm font-medium">
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-10 hover:-translate-y-2 transition-all ease-in-out duration-700">
-                    <div className=" p-6 rounded-2xl">
-                        <h3 className="mb-4 text-2xl font-bold">Education</h3>
-                        <div className="border-l-4 border-purple-500 pl-4">
-                            <p className="font-bold">B.S. in Information Technology</p>
-                            <p className="text-gray-600">Rizal Technological University</p>
-                            <p className="text-sm italic">2023 - Present</p>
-                        </div>
-                    </div>
-
-                    <div className=" p-6 rounded-2xl">
-                        <h3 className="mb-4 text-2xl font-bold">Experience</h3>
-                        <div className="border-l-4 border-purple-500 pl-4">
-                            <p className="font-bold">Information Technology Intern</p>
-                            <p className="text-gray-600">Silangan National High School</p>
-                            <p className="text-sm italic text-gray-500">March 2023 - May 2023</p>
-                        </div>
-                    </div>
-                </div>
+        <div className="mt-12 grid items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="glass-card p-6 sm:p-8">
+            <h3 className="mb-5 font-display text-xl font-bold">Frontend</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {frontend.map(skill => (
+                <span key={skill} className="chip">
+                  {skill}
+                </span>
+              ))}
             </div>
-        </section>
-    );
+          </div>
+          <div className="glass-card p-6 sm:p-8">
+            <h3 className="mb-5 font-display text-xl font-bold">Backend &amp; Database</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {backend.map(skill => (
+                <span key={skill} className="chip">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="glass-card p-6 sm:p-8">
+            <h3 className="mb-5 font-display text-xl font-bold">Tools &amp; Deployment</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {tools.map(skill => (
+                <span key={skill} className="chip">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <div className="glass-card p-6 sm:p-8">
+            <h3 className="mb-6 font-display text-xl font-bold">Education</h3>
+            <div className="border-l-2 border-accent/40 pl-5">
+              <p className="font-semibold">B.S. in Information Technology</p>
+              <p className="mt-1 text-white/70">Rizal Technological University</p>
+              <p className="mt-1 font-mono text-sm text-white/50">2023 — Present</p>
+            </div>
+          </div>
+          <div className="glass-card p-6 sm:p-8">
+            <h3 className="mb-6 font-display text-xl font-bold">Experience</h3>
+            <div className="border-l-2 border-violet-400/40 pl-5">
+              <p className="font-semibold">Information Technology Intern</p>
+              <p className="mt-1 text-white/70">Silangan National High School</p>
+              <p className="mt-1 font-mono text-sm text-white/50">Mar 2023 — May 2023</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <GitHubCard />
+        </div>
+      </div>
+    </section>
+  );
 };

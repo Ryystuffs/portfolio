@@ -254,8 +254,25 @@ void main() {
         uniforms.rayDir.value = dir;
       };
 
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       const loop = t => {
         if (!rendererRef.current || !uniformsRef.current || !meshRef.current) {
+          return;
+        }
+
+        if (document.hidden) {
+          animationIdRef.current = requestAnimationFrame(loop);
+          return;
+        }
+
+        if (prefersReducedMotion) {
+          uniforms.iTime.value = 0;
+          try {
+            renderer.render({ scene: mesh });
+          } catch (error) {
+            console.warn('WebGL rendering error:', error);
+          }
           return;
         }
 

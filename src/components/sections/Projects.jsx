@@ -1,54 +1,89 @@
 import { Card } from "../card";
-import project1 from '../../assets/project1.png';
-import project2 from '../../assets/project2.png';
-import project3 from '../../assets/project3.png';
+import project1 from '../../assets/project1.webp';
+import project2 from '../../assets/project2.webp';
+import project3 from '../../assets/project3.webp';
+
+const projects = [
+  {
+    pic: project1,
+    title: 'Gym Membership Management System',
+    role: 'Full-Stack Lead Developer',
+    year: '2025',
+    status: 'Live',
+    featured: true,
+    description:
+      'A full-stack system that automates gym operations and member attendance with real-time QR check-in.',
+    problem:
+      'Member check-ins were handled manually, creating long queues at the front desk and frequent attendance errors.',
+    highlights: [
+      'Built secure QR-based check-in with Simple QrCode and Html5-QrCode for one-step scanning',
+      'Designed a responsive Laravel + Blade interface with Tailwind CSS',
+      'Modeled the MySQL schema and handled deployment on XAMPP Apache',
+      'Added SweetAlert feedback to guide members through the check-in flow',
+    ],
+    techStack: ['Laravel', 'JavaScript', 'Blade', 'MySQL', 'SweetAlert'],
+    link: 'https://github.com/Ryystuffs/gymsystem',
+    live: 'https://gym-management-system.infinityfreeapp.com/',
+    vid: 'https://www.youtube.com/embed/_lBIpgtJiac?controls=0&autoplay=1&mute=1',
+  },
+  {
+    pic: project2,
+    title: 'Travel Guide',
+    role: 'Full-Stack Lead Developer',
+    year: '2024',
+    status: 'Completed',
+    description:
+      'A travel planning site that bundles destinations, tips, and ready-made schedules in one place.',
+    problem:
+      'Travel planning was scattered across sites — users struggled to find destinations, tips, and itineraries together.',
+    highlights: [
+      'Planned and structured trip information into one searchable experience',
+      'Built a responsive layout that works across devices',
+      'Stored locations and schedules in MySQL with a PHP backend',
+      'Kept the interface simple so travelers find answers fast',
+    ],
+    techStack: ['PHP', 'JavaScript', 'MySQL'],
+    link: 'https://github.com/Ryystuffs/BAO-RESERVATION',
+  },
+  {
+    pic: project3,
+    title: 'Reservation Management System',
+    role: 'Full-Stack Lead Developer',
+    year: '2024',
+    status: 'Completed',
+    description:
+      'A streamlined system for the Business Affairs Office that speeds up book, uniform, and merchandise purchases.',
+    problem:
+      'Students waited in long queues at the Business Affairs Office to buy books, uniforms, and merchandise, slowing down the whole process.',
+    highlights: [
+      'Digitized the purchase flow so students reserve items without queueing',
+      'Built the logic in C++ with a Visual Studio UI',
+      'Connected reservation records to a MySQL database',
+      'Reduced manual paperwork for office staff',
+    ],
+    techStack: ['C++', 'Visual Studio', 'MySQL'],
+    link: 'https://github.com/Ryystuffs/compass_php_project',
+  },
+];
+
 export const Projects = () => {
-    const projects =[
-        {   
-            pic: project1,
-            title: 'Gym Membership Management System',
-            role: 'Full-Stack Lead Developer',
-            description:'This Gym Management System is a full-stack web application designed to automate facility operations and member attendance. Built on the Laravel framework, the system features a secure, real-time check-in architecture utilizing Simple QrCode and Html5-QrCode for seamless generation and scanning. The user interface is crafted with Tailwind CSS for a modern, responsive experience, while the backend is powered by MySQL and XAMPP Apache to ensure robust data management and reliable performance.',
-            techStack:['Laravel','Javascript','Blade','MySQL','SweetAlert'],
-            link: 'https://github.com/Ryystuffs/gymsystem',
-            live: "https://gym-management-system.infinityfreeapp.com/",
-            vid: "https://www.youtube.com/embed/_lBIpgtJiac?controls=0&autoplay=1&mute=1"
-        },
-        {
-            pic: project2,
-            title: 'Travel Guide',
-            role: 'Full-Stack Lead Developer',
-            description:'A simple travel guide website that helps people plan their trips easily. It provides clear information on the best places to visit, helpful travel tips, and ready-made schedules. The design is easy to use on any device, allowing travelers to find locations and organize their trip details in one place.',
-            techStack:['PHP','Javascript','MySQL'],
-            link: 'https://github.com/Ryystuffs/BAO-RESERVATION'
-        },
-        {
-            pic: project3,
-            title: 'Reservation Management System',
-            role: 'Full-Stack Lead Developer',
-            description:'A streamlined reservation system built to simplify school transactions. It helps students easily purchase books, uniforms, and merchandise, reducing long wait times and making the process at the Business Affairs Office much faster and more organized.',
-            techStack:['C++','Visual Studio','MySQL'],
-            link: 'https://github.com/Ryystuffs/compass_php_project'
-        }   
-    ];
-    return (
-        <section id="projects" className="mt-20 pt-10 mb-0 bg-black">
-            <div className="text-[52px] font-extrabold mt-5 mx-10 px-10 ">Projects</div>
-            <div className="p-10">
-                {projects.map((proj,index)=>(  
-                    <Card
-                        key={proj.title}
-                        pic={proj.pic}
-                        title={proj.title}
-                        role={proj.role}
-                        description={proj.description}
-                        techStack={proj.techStack}  
-                        link={proj.link}
-                        live={proj.live}
-                        vid={proj.vid}
-                    />
-                ))}
-            </div>
-        </section>
-    );
-}
+  return (
+    <section id="projects" className="border-t border-white/10 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mb-14">
+          <p className="eyebrow mb-3">02 // projects</p>
+          <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">Selected work</h2>
+          <p className="mt-4 max-w-xl text-white/60">
+            Full-stack builds — from school projects to live web applications.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-10 sm:gap-16">
+          {projects.map((proj, index) => (
+            <Card key={proj.title} {...proj} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

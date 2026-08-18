@@ -1,17 +1,6 @@
 import { useState } from 'react';
-import {
-  ArrowUpRight,
-  Check,
-  Copy,
-  Download,
-  Facebook,
-  Github,
-  Linkedin,
-  Mail,
-} from 'lucide-react';
-import { site, socials } from '../data/site.js';
-
-const socialIcons = { GitHub: Github, LinkedIn: Linkedin, Facebook };
+import { ArrowUpRight, Check, Copy, Download, EnvelopeSimple } from '@phosphor-icons/react';
+import { site, socialIcons, socials } from '../data/site.js';
 
 export const Footer = () => {
   const [copied, setCopied] = useState(false);
@@ -27,36 +16,35 @@ export const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="relative z-10 border-t border-white/10">
+    <footer id="contact" className="relative z-10 border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <div className="glass-card p-8 text-center sm:p-14">
-          <p className="eyebrow mb-4">04 // contact</p>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">
+        <div className="surface-card p-8 text-center sm:p-14">
+          <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
             Let's build something together
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/60">
+          <p className="mx-auto mt-4 max-w-xl text-muted">
             Open to web development and IT internship opportunities — let's talk.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a href={`mailto:${site.email}`} className="btn-primary">
-              <Mail className="h-4 w-4" /> {site.email}
+              <EnvelopeSimple size={16} /> {site.email}
             </a>
-            <button type="button" onClick={copyEmail} className="btn-ghost">
-              {copied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4" />}
+            <button type="button" onClick={copyEmail} className="btn-secondary">
+              {copied ? <Check size={16} className="text-pale-green-ink" /> : <Copy size={16} />}
               {copied ? 'Copied!' : 'Copy email'}
             </button>
-            <a href={site.resume} download className="btn-ghost">
-              <Download className="h-4 w-4" /> Resume
+            <a href={site.resume} download className="btn-secondary">
+              <Download size={16} /> Resume
             </a>
           </div>
-          <p className="mt-6 font-mono text-sm text-white/40">
-            <ArrowUpRight className="mr-1 inline h-3.5 w-3.5" />
+          <p className="mt-6 font-mono text-sm text-muted">
+            <ArrowUpRight size={14} className="mr-1 inline text-accent" />
             or connect on your preferred platform
           </p>
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <p className="font-mono text-sm text-white/40">
+          <p className="font-mono text-sm text-muted">
             © {new Date().getFullYear()} Ryan Trinidad
           </p>
           <ul className="flex gap-2">
@@ -69,15 +57,15 @@ export const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent"
+                    className="flex h-10 w-10 items-center justify-center rounded-md border border-line bg-paper text-muted transition hover:-translate-y-0.5 hover:border-accent/40 hover:text-accent"
                   >
-                    {Icon && <Icon className="h-4 w-4" />}
+                    {Icon && <Icon size={16} />}
                   </a>
                 </li>
               );
             })}
           </ul>
-          <a href="#home" className="font-mono text-sm text-white/40 transition hover:text-accent">
+          <a href="#home" className="font-mono text-sm text-muted transition hover:text-accent">
             back to top ↑
           </a>
         </div>

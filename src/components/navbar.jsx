@@ -1,11 +1,11 @@
-import { Menu, X } from 'lucide-react';
+import { List, X } from '@phosphor-icons/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import useActiveSection from './useActiveSection.jsx';
 
 const links = [
-  { href: '#home', label: 'Home' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#about', label: 'About' },
+  { href: '#home', label: 'Home', num: '01' },
+  { href: '#about', label: 'About', num: '02' },
+  { href: '#projects', label: 'Projects', num: '03' },
 ];
 
 export const Navbar = () => {
@@ -45,10 +45,10 @@ export const Navbar = () => {
     <header className="sticky top-0 z-50">
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between border-b border-white/10 bg-black/40 px-5 backdrop-blur-xl sm:px-8"
+        className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between border-b border-line bg-canvas/85 px-5 backdrop-blur-xl sm:px-8"
       >
-        <a href="#home" className="font-mono text-lg font-semibold text-white">
-          ryan.<span className="text-violet-400">dev</span>
+        <a href="#home" className="font-mono text-lg font-semibold text-ink">
+          ryan.<span className="text-accent">dev</span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -56,12 +56,21 @@ export const Navbar = () => {
             <li key={link.href}>
               <a
                 href={link.href}
-                className={`text-sm font-medium transition ${
+                className={`group inline-flex items-center gap-1.5 text-sm font-medium transition ${
                   activeSection === link.href.slice(1)
-                    ? 'text-accent'
-                    : 'text-white/70 hover:text-white'
+                    ? 'text-ink'
+                    : 'text-muted hover:text-ink'
                 }`}
               >
+                <span
+                  className={`font-mono text-xs transition ${
+                    activeSection === link.href.slice(1)
+                      ? 'text-accent'
+                      : 'text-muted/70 group-hover:text-accent'
+                  }`}
+                >
+                  {link.num}
+                </span>
                 {link.label}
               </a>
             </li>
@@ -78,9 +87,9 @@ export const Navbar = () => {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            className="rounded-lg border border-white/10 bg-white/5 p-2 text-white md:hidden"
+            className="rounded-md border border-line bg-paper p-2 text-ink md:hidden"
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isOpen ? <X size={20} /> : <List size={20} />}
           </button>
         </div>
       </nav>
@@ -90,7 +99,7 @@ export const Navbar = () => {
         ref={menuRef}
         inert={!isOpen}
         aria-hidden={!isOpen}
-        className={`fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto overscroll-contain bg-black/80 backdrop-blur-xl transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto overscroll-contain border-b border-line bg-canvas/95 backdrop-blur-xl transition-opacity duration-300 md:hidden ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >
@@ -100,10 +109,11 @@ export const Navbar = () => {
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className={`font-display text-2xl transition sm:text-3xl ${
-                activeSection === link.href.slice(1) ? 'text-accent' : 'text-white hover:text-accent'
+              className={`font-display text-3xl transition sm:text-4xl ${
+                activeSection === link.href.slice(1) ? 'text-accent' : 'text-ink hover:text-accent'
               }`}
             >
+              <span className="mr-2 font-mono text-sm text-muted">{link.num}</span>
               {link.label}
             </a>
           ))}

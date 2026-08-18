@@ -1,3 +1,7 @@
+import { FacebookLogo, GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
+
+export const socialIcons = { GitHub: GithubLogo, LinkedIn: LinkedinLogo, Facebook: FacebookLogo };
+
 export const site = {
   name: 'Ryan Trinidad',
   brand: 'ryan.dev',

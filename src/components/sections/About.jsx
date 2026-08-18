@@ -1,82 +1,62 @@
-import { GitHubCard } from './GitHubCard';
+import { GitHubCard } from './GitHubCard.jsx';
+import { skills, skillTitles } from '../../data/skills.js';
+
+const chipColors = {
+  frontend: 'bg-pale-blue text-pale-blue-ink border-pale-blue',
+  backend: 'bg-pale-green text-pale-green-ink border-pale-green',
+  tools: 'bg-pale-yellow text-pale-yellow-ink border-pale-yellow',
+};
 
 export const About = () => {
-  const frontend = ['TailwindCSS', 'Next.js', 'React', 'JavaScript', 'HTML', 'CSS', 'Blade'];
-  const backend = [
-    'Node.js',
-    'Express',
-    'MongoDB',
-    'PostgreSQL',
-    'Supabase',
-    'PHP',
-    'Laravel',
-    'MySQL',
-    'C++',
-  ];
-  const tools = ['Vercel', 'Render', 'XAMPP'];
-
   return (
-    <section id="about" className="border-t border-white/10 py-24 sm:py-32">
+    <section id="about" className="border-t border-line py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mb-14">
-          <p className="eyebrow mb-3">03 // about</p>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">About me</h2>
+          <p className="eyebrow mb-3">01 // about</p>
+          <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+            About me
+          </h2>
         </div>
 
-        <p className="max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
-          An aspiring{' '}
-          <span className="font-semibold text-violet-300">Web Developer</span> with expertise in
-          full-stack development — building scalable websites and creating innovative solutions.
+        <p className="max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+          An aspiring <span className="font-semibold text-accent">Web Developer</span> with
+          expertise in full-stack development — building scalable websites and creating innovative
+          solutions.
         </p>
 
         <div className="mt-12 grid items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div className="glass-card p-6 sm:p-8">
-            <h3 className="mb-5 font-display text-xl font-bold">Frontend</h3>
-            <div className="grid grid-cols-2 gap-2">
-              {frontend.map(skill => (
-                <span key={skill} className="chip">
-                  {skill}
-                </span>
-              ))}
+          {Object.entries(skills).map(([group, list]) => (
+            <div key={group} className="surface-card p-6 sm:p-8">
+              <h3 className="mb-5 font-display text-xl font-medium">{skillTitles[group]}</h3>
+              <div className="flex flex-wrap gap-2">
+                {list.map(skill => (
+                  <span
+                    key={skill}
+                    className={`inline-flex items-center rounded-full border px-3 py-1.5 text-sm ${chipColors[group]}`}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="glass-card p-6 sm:p-8">
-            <h3 className="mb-5 font-display text-xl font-bold">Backend &amp; Database</h3>
-            <div className="grid grid-cols-2 gap-2">
-              {backend.map(skill => (
-                <span key={skill} className="chip">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="glass-card p-6 sm:p-8">
-            <h3 className="mb-5 font-display text-xl font-bold">Tools &amp; Deployment</h3>
-            <div className="grid grid-cols-2 gap-2">
-              {tools.map(skill => (
-                <span key={skill} className="chip">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <div className="glass-card p-6 sm:p-8">
-            <h3 className="mb-6 font-display text-xl font-bold">Education</h3>
-            <div className="border-l-2 border-accent/40 pl-5">
+          <div className="surface-card p-6 sm:p-8">
+            <h3 className="mb-6 font-display text-xl font-medium">Education</h3>
+            <div className="border-l border-line pl-5">
               <p className="font-semibold">B.S. in Information Technology</p>
-              <p className="mt-1 text-white/70">Rizal Technological University</p>
-              <p className="mt-1 font-mono text-sm text-white/50">2023 — Present</p>
+              <p className="mt-1 text-muted">Rizal Technological University</p>
+              <p className="mt-1 font-mono text-sm text-muted">2023 — Present</p>
             </div>
           </div>
-          <div className="glass-card p-6 sm:p-8">
-            <h3 className="mb-6 font-display text-xl font-bold">Experience</h3>
-            <div className="border-l-2 border-violet-400/40 pl-5">
+          <div className="surface-card p-6 sm:p-8">
+            <h3 className="mb-6 font-display text-xl font-medium">Experience</h3>
+            <div className="border-l border-line pl-5">
               <p className="font-semibold">Information Technology Intern</p>
-              <p className="mt-1 text-white/70">Silangan National High School</p>
-              <p className="mt-1 font-mono text-sm text-white/50">Mar 2023 — May 2023</p>
+              <p className="mt-1 text-muted">Silangan National High School</p>
+              <p className="mt-1 font-mono text-sm text-muted">Mar 2023 — May 2023</p>
             </div>
           </div>
         </div>

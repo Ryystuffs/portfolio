@@ -31,10 +31,10 @@ export const ScrollProgress = () => {
     <div
       aria-hidden="true"
       className="fixed inset-x-0 top-0 z-[60] h-0.5"
-      style={{ backgroundColor: 'rgba(0,255,255,0.25)' }}
+      style={{ backgroundColor: 'rgba(17,17,17,0.12)' }}
     >
       <div
-        className="h-full bg-accent transition-[width] duration-150 ease-out"
+        className="h-full bg-ink transition-[width] duration-150 ease-out"
         style={{ width: `${progress * 100}%` }}
       />
     </div>
